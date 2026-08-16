@@ -1,0 +1,2114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arnold Z. Adeva | Junior Full-Stack Web Developer</title>
+
+    <!-- Primary meta -->
+    <meta
+      name="description"
+      content="Arnold Z. Adeva is an IT graduate specializing in AI-assisted web development with Vue.js, Node.js, Python, and Firebase. Skilled in practical solutions, embedded systems, and user-focused products."
+    />
+    <meta
+      name="theme-color"
+      content="#090b0f"
+      media="(prefers-color-scheme: dark)"
+    />
+    <meta
+      name="theme-color"
+      content="#ffffff"
+      media="(prefers-color-scheme: light)"
+    />
+    <link rel="canonical" href="/port.html" />
+    <!-- SVG favicon (data URI) -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23090b0f'/%3E%3Ctext x='50' y='58' font-size='46' text-anchor='middle' fill='white' font-family='Arial, Helvetica, sans-serif' font-weight='700'%3EAZ%3C/text%3E%3C/svg%3E"
+    />
+
+    <!-- TailwindCSS via CDN (deferred) -->
+    <script src="https://cdn.tailwindcss.com" defer></script>
+
+    <!-- Font Awesome (load non-blocking) -->
+    <link
+      rel="preload"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      as="style"
+      onload="this.rel = 'stylesheet'"
+    />
+    <noscript
+      ><link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    /></noscript>
+
+    <!-- Google Fonts (Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* Accessible skip-link */
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+      }
+      .sr-only.focusable:focus,
+      .sr-only.focusable:active,
+      .sr-only:focus,
+      .sr-only:active {
+        position: static;
+        width: auto;
+        height: auto;
+        margin: 0;
+        clip: auto;
+        overflow: visible;
+        white-space: normal;
+      }
+
+      /* ── Custom styles ── */
+      body,
+      button,
+      input,
+      textarea,
+      select,
+      a {
+        font-family:
+          "Inter",
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+      }
+      * {
+        scroll-behavior: smooth;
+      }
+
+      /* Typing cursor */
+      .typing-cursor::after {
+        content: "|";
+        animation: blink 0.8s step-end infinite;
+        color: #6366f1;
+      }
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+      }
+
+      /* Scroll-triggered fade-up */
+      .fade-up {
+        opacity: 0;
+        transform: translateY(40px);
+        transition:
+          opacity 0.8s ease,
+          transform 0.8s ease;
+      }
+      .fade-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Skill progress bar animation */
+      .skill-bar {
+        transition: width 1.2s ease-in-out;
+      }
+
+      /* Project card hover */
+      .project-card {
+        transition:
+          transform 0.4s ease,
+          box-shadow 0.4s ease;
+      }
+      .project-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.25);
+      }
+      /* Smooth opacity transitions for filtering */
+      .project-card {
+        transition:
+          opacity 300ms ease,
+          transform 0.4s ease,
+          box-shadow 0.4s ease;
+        opacity: 1;
+      }
+
+      /* Navbar blur backdrop */
+      .glass-nav {
+        background: rgba(255, 255, 255, 0.82);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+      .dark .glass-nav {
+        background: rgba(18, 24, 39, 0.82);
+      }
+
+      /* Minimal dark / white theme variables */
+      :root {
+        --bg: #ffffff;
+        --surface: #f8fafc;
+        --surface-alt: #f1f5f9;
+        --text-main: #0f172a;
+        --text-muted: #475569;
+        --accent: #111827;
+        --accent-strong: #1e293b;
+        --border: rgba(15, 23, 42, 0.12);
+        --shadow: rgba(15, 23, 42, 0.08);
+        --muted-surface: #e2e8f0;
+      }
+      .dark {
+        --bg: #090b0f;
+        --surface: #111827;
+        --surface-alt: #0f172a;
+        --text-main: #f8fafc;
+        --text-muted: #cbd5e1;
+        --accent: #f8fafc;
+        --accent-strong: #e2e8f0;
+        --border: rgba(248, 250, 252, 0.12);
+        --shadow: rgba(0, 0, 0, 0.45);
+        --muted-surface: #1f2937;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text-main);
+      }
+      .card-bg,
+      .bg-white,
+      .bg-slate-50,
+      .bg-slate-100,
+      .bg-slate-200,
+      .bg-indigo-100,
+      .bg-indigo-900\/40,
+      .bg-slate-800,
+      .bg-slate-900\/50 {
+        background-color: var(--surface) !important;
+      }
+      .dark .card-bg,
+      .dark .bg-white,
+      .dark .bg-slate-50,
+      .dark .bg-slate-100,
+      .dark .bg-slate-200,
+      .dark .bg-slate-800,
+      .dark .bg-slate-900\/50,
+      .dark .bg-indigo-100,
+      .dark .bg-indigo-900\/40 {
+        background-color: var(--surface-alt) !important;
+      }
+      .typing-cursor::after {
+        color: var(--accent);
+      }
+      .text-slate-900,
+      .text-slate-700,
+      .text-slate-600,
+      .text-slate-500,
+      .text-slate-400,
+      .text-slate-300,
+      .text-slate-500.dark\:text-slate-300,
+      .text-slate-700.dark\:text-slate-300,
+      .dark .text-slate-900,
+      .dark .text-slate-700,
+      .dark .text-slate-600,
+      .dark .text-slate-500,
+      .dark .text-slate-400,
+      .dark .text-slate-300 {
+        color: var(--text-main) !important;
+      }
+      a,
+      .text-indigo-600,
+      .dark .text-indigo-400 {
+        color: var(--accent) !important;
+      }
+      a:hover,
+      .hover\:text-indigo-600:hover,
+      .dark .hover\:text-indigo-400:hover {
+        color: var(--accent-strong) !important;
+      }
+      .bg-indigo-600,
+      .bg-indigo-500,
+      .bg-indigo-400 {
+        background-color: var(--accent) !important;
+        color: var(--bg) !important;
+      }
+      .bg-indigo-100,
+      .bg-indigo-900\/40 {
+        background-color: var(--muted-surface) !important;
+      }
+      .border-indigo-600 {
+        border-color: var(--accent) !important;
+      }
+      .border-slate-200,
+      .border-slate-300,
+      .border-slate-700,
+      .border-slate-600 {
+        border-color: var(--border) !important;
+      }
+      .project-card:hover,
+      .card-bg,
+      .bg-white,
+      .bg-slate-50,
+      .bg-slate-100,
+      .bg-slate-200 {
+        box-shadow: 0 18px 32px -18px var(--shadow) !important;
+      }
+
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f5f9;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #6366f1;
+        border-radius: 8px;
+      }
+      .dark ::-webkit-scrollbar-track {
+        background: #1e293b;
+      }
+      .dark ::-webkit-scrollbar-thumb {
+        background: #818cf8;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Skip link for keyboard users -->
+    <a
+      href="#main"
+      class="sr-only focusable p-3 bg-indigo-600 text-white rounded-md"
+      style="z-index: 999"
+    ></a>
+
+    <!-- ════════════════════════════════════════════════
+    NAVIGATION
+    ════════════════════════════════════════════════ -->
+    <nav
+      id="navbar"
+      role="navigation"
+      aria-label="Main navigation"
+      class="fixed top-0 left-0 w-full z-50 glass-nav border-b border-slate-200 dark:border-slate-700 transition-colors duration-300"
+    >
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <!-- Logo -->
+          <a
+            href=""
+            class="text-xl font-extrabold text-green-700 dark:text-green-700 tracking-tight"
+            >&lt;Anode.dev&gt;</a
+          >
+          <!-- Desktop Nav -->
+          <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+            <a
+              href="#home"
+              class="text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition"
+              >Home</a
+            >
+            <a
+              href="#about"
+              class="text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition"
+              >About</a
+            >
+            <a
+              href="#skills"
+              class="text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition"
+              >Skills</a
+            >
+            <a
+              href="#projects"
+              class="text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition"
+              >Projects</a
+            >
+            <a
+              href="#experience"
+              class="text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition"
+              >Experience</a
+            >
+            <a
+              href="#contact"
+              class="text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition"
+              >Contact</a
+            >
+          </div>
+
+          <!-- Right: Theme Toggle + Mobile Menu -->
+          <div class="flex items-center gap-3">
+            <!-- Theme toggle -->
+            <button
+              id="themeToggle"
+              class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition text-slate-700 dark:text-slate-300"
+              aria-label="Toggle theme"
+            >
+              <i id="themeIcon" class="fas fa-moon text-lg"></i>
+            </button>
+
+            <!-- Mobile hamburger -->
+            <button
+              id="mobileMenuBtn"
+              class="md:hidden p-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition text-slate-700 dark:text-slate-300"
+              aria-label="Open menu"
+              aria-expanded="false"
+              aria-controls="mobileMenu"
+            >
+              <i class="fas fa-bars text-xl"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Mobile menu (hidden by default) -->
+        <div
+          id="mobileMenu"
+          class="md:hidden hidden pb-4 flex flex-col gap-3 text-sm font-medium border-t border-slate-200 dark:border-slate-700 pt-4"
+          role="menu"
+          aria-label="Mobile navigation"
+          aria-hidden="true"
+        >
+          <a
+            href="#home"
+            class="text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition"
+            >Home</a
+          >
+          <a
+            href="#about"
+            class="text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition"
+            >About</a
+          >
+          <a
+            href="#skills"
+            class="text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition"
+            >Skills</a
+          >
+          <a
+            href="#projects"
+            class="text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition"
+            >Projects</a
+          >
+          <a
+            href="#experience"
+            class="text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition"
+            >Experience</a
+          >
+          <a
+            href="#contact"
+            class="text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition"
+            >Contact</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- ════════════════════════════════════════════════
+    HERO SECTION
+    ════════════════════════════════════════════════ -->
+    <main id="main" tabindex="-1">
+      <section
+        id="home"
+        class="min-h-screen flex items-center pt-20 pb-12 px-4 sm:px-6 lg:px-8"
+      >
+        <div class="max-w-6xl mx-auto w-full">
+          <div class="grid md:grid-cols-2 gap-12 items-center">
+            <!-- Right: Avatar / Illustration -->
+            <div class="flex justify-center md:justify-end fade-up">
+              <div
+                class="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full bg-gradient-to-br from-indigo-100 to-purple-100 dark:from-indigo-900/30 dark:to-purple-900/30 flex items-center justify-center border-4 border-white dark:border-slate-700 shadow-2xl overflow-hidden"
+              >
+                <img src="MINSU_6996.JPG" />
+                <!-- Decorative ring -->
+                <div
+                  class="absolute inset-0 rounded-full border-2 border-green-700 dark:border-green-700 animate-pulse pointer-events-none"
+                  aria-hidden="true"
+                ></div>
+              </div>
+            </div>
+            <!-- Left -->
+            <div class="fade-up">
+              <span
+                class="inline-block px-4 py-1.5 rounded-full bg-indigo-100 dark:bg-indigo-900/40 text-green-700 dark:text-green-700 text-xs font-semibold tracking-wide mb-4"
+              >
+                <i class="fas fa-code mr-2"></i> Junior Full-Stack Web Developer
+              </span>
+              <h1
+                class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white leading-tight"
+              >
+                Hi, I'm <br />
+                <span class="text-indigo-600 dark:text-indigo-400"
+                  >Arnold Z. Adeva</span
+                >
+              </h1>
+              <!-- <p
+                class="text-xl sm:text-xl text-slate-600 dark:text-slate-300 mt-4"
+              >
+                <span class="typing-cursor font-semibold"
+                  >I build practical website and web applications utilizing
+                  AI-assisted agile developement with continuous feedback for a
+                  fast paced development and delivery.</span
+                >
+              </p> -->
+              <p
+                class="text-slate-600 dark:text-slate-400 mt-4 max-w-lg leading-relaxed"
+              >
+                Information Technology graduate experienced in AI-assisted
+                workflow software development, agile delivery,and continuous
+                feedback for a fast paced development and delivery of modern web
+                platforms. Skilled with Vue.js, Node.js,REST APIs, and Firebase
+                NoSQL Databases.
+              </p>
+              <div class="flex flex-wrap gap-4 mt-8">
+                <a
+                  href="MyResume.pdf"
+                  download="Arnold_Adeva_Resume.pdf"
+                  class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl shadow-lg shadow-indigo-200 dark:shadow-indigo-900/30 transition flex items-center gap-2"
+                >
+                  <i class="fas fa-file-pdf"></i>
+                  Download Resume
+                </a>
+                <a
+                  href="#projects"
+                  class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl shadow-lg shadow-indigo-200 dark:shadow-indigo-900/30 transition flex items-center gap-2"
+                >
+                  <i class="fas fa-rocket"></i> View My Work
+                </a>
+                <a
+                  href="#contact"
+                  class="px-6 py-3 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-200 font-semibold rounded-xl hover:bg-slate-50 dark:hover:bg-slate-700 transition flex items-center gap-2"
+                >
+                  <i class="fas fa-paper-plane"></i> Contact Me
+                </a>
+                <a
+                  href="https://github.com/ctrl-Anode"
+                  class="text-slate-500 hover:text-indigo-600 dark:text-slate-400 dark:hover:text-indigo-400 transition text-xl"
+                  aria-label="GitHub"
+                  ><i class="fab fa-github"></i
+                ></a>
+                <a
+                  href="https://www.facebook.com/Aan0de"
+                  class="text-slate-500 hover:text-indigo-600 dark:text-slate-400 dark:hover:text-indigo-400 transition text-xl"
+                  aria-label="Facebook"
+                  ><i class="fab fa-facebook"></i
+                ></a>
+                <a
+                  href="https://www.instagram.com/aa_anode"
+                  class="text-slate-500 hover:text-indigo-600 dark:text-slate-400 dark:hover:text-indigo-400 transition text-xl"
+                  aria-label="Instagram"
+                  ><i class="fab fa-instagram"></i
+                ></a>
+              </div>
+              <!-- Social icons -->
+              <!-- <div class="flex gap-4 mt-8">
+                        <a href="#" class="text-slate-500 hover:text-indigo-600 dark:text-slate-400 dark:hover:text-indigo-400 transition text-xl" aria-label="GitHub"><i class="fab fa-github"></i></a> -->
+              <!-- <a href="#" class="text-slate-500 hover:text-indigo-600 dark:text-slate-400 dark:hover:text-indigo-400 transition text-xl" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-slate-500 hover:text-indigo-600 dark:text-slate-400 dark:hover:text-indigo-400 transition text-xl" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-slate-500 hover:text-indigo-600 dark:text-slate-400 dark:hover:text-indigo-400 transition text-xl" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="text-slate-500 hover:text-indigo-600 dark:text-slate-400 dark:hover:text-indigo-400 transition text-xl" aria-label="Dev.to"><i class="fab fa-dev"></i></a> -->
+              <!-- </div> -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════════════════════
+    STATS / COUNTERS
+    ════════════════════════════════════════════════ -->
+      <section
+        class="py-12 bg-slate-50 dark:bg-slate-900/50 border-y border-slate-200 dark:border-slate-700"
+      >
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div class="fade-up">
+              <div
+                class="text-4xl font-extrabold text-indigo-600 dark:text-indigo-400"
+              >
+                Fresh Grad
+              </div>
+              <div class="text-sm text-slate-500 dark:text-slate-400 mt-1">
+                Years Experience
+              </div>
+            </div>
+            <div class="fade-up">
+              <div
+                class="text-4xl font-extrabold text-indigo-600 dark:text-indigo-400"
+              >
+                3+
+              </div>
+              <div class="text-sm text-slate-500 dark:text-slate-400 mt-1">
+                Projects Delivered
+              </div>
+            </div>
+            <div class="fade-up">
+              <div
+                class="text-4xl font-extrabold text-indigo-600 dark:text-indigo-400"
+              >
+                2
+              </div>
+              <div class="text-sm text-slate-500 dark:text-slate-400 mt-1">
+                Internships Completed
+              </div>
+            </div>
+            <div class="fade-up">
+              <div
+                class="text-4xl font-extrabold text-indigo-600 dark:text-indigo-400"
+              >
+                5+
+              </div>
+              <div class="text-sm text-slate-500 dark:text-slate-400 mt-1">
+                Certifications
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════════════════════
+    ABOUT
+    ════════════════════════════════════════════════ -->
+      <section id="about" class="py-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-14 fade-up">
+            <span
+              class="text-indigo-600 dark:text-indigo-400 font-semibold text-sm tracking-widest uppercase"
+              >About Me</span
+            >
+            <h2
+              class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-2"
+            >
+              Who I Am
+            </h2>
+            <div class="w-16 h-1 bg-indigo-600 mx-auto mt-4 rounded-full"></div>
+          </div>
+          <div class="grid md:grid-cols-5 gap-10">
+            <div class="md:col-span-3 fade-up">
+              <p
+                class="text-lg text-slate-600 dark:text-slate-300 leading-relaxed"
+              >
+                I'm an
+                <strong class="text-indigo-600 dark:text-indigo-400"
+                  >Information Technology fresh graduate</strong
+                >
+                with hands-on experience in AI-assisted software development,
+                agile delivery, web systems and practices SDLC that solve
+                practical problems. Currenly seeking IT related job
+                opportunities to further enhance my skills and contribute to
+                innovative projects.
+              </p>
+              <p
+                class="text-slate-600 dark:text-slate-300 leading-relaxed mt-4"
+              >
+                Skilled in Vue.js, Node.js, MySQL and Firebase, I build website/
+                web applications, and business software while collaborating
+                closely with stakeholders and delivering clean, reliable code.
+              </p>
+              <div class="flex flex-wrap gap-6 mt-6">
+                <div>
+                  <span class="block text-sm text-slate-500 dark:text-slate-400"
+                    >📍 Location</span
+                  >
+                  <span class="font-medium text-slate-900 dark:text-white"
+                    >Pachoca, Calapan City, Oriental Mindoro</span
+                  >
+                </div>
+                <div>
+                  <span class="block text-sm text-slate-500 dark:text-slate-400"
+                    >📧 Email</span
+                  >
+                  <a
+                    href="mailto:arnoldadeva.dev@gmail.com"
+                    class="text-slate-900 dark:text-white font-medium hover:underline"
+                  >
+                    arnoldadeva.dev@gmail.com
+                  </a>
+                  >
+                </div>
+                <div>
+                  <span class="block text-sm text-slate-500 dark:text-slate-400"
+                    >🎓 Degree</span
+                  >
+                  <span class="font-medium text-slate-900 dark:text-white"
+                    >B.S. Information Technology</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="md:col-span-2 fade-up">
+              <div
+                class="bg-slate-100 dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700"
+              >
+                <h4 class="font-bold text-slate-900 dark:text-white mb-4">
+                  <i class="fas fa-bolt text-indigo-600 mr-2"></i>What I Build
+                </h4>
+                <ul class="space-y-3 text-slate-600 dark:text-slate-300">
+                  <li class="flex items-start gap-3">
+                    <i class="fas fa-check-circle text-indigo-600 mt-1"></i>
+                    Web applications - Responsive applications with Vue.js,
+                    Node.js, and Firebase.
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <i class="fas fa-check-circle text-indigo-600 mt-1"></i>
+                    AI-assisted software development and embedded system
+                    integration.
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <i class="fas fa-check-circle text-indigo-600 mt-1"></i>
+                    Business System with authentication, role-based access, CRUD
+                    workflows, dashboards and reporting.
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <i class="fas fa-check-circle text-indigo-600 mt-1"></i>
+                    Backend APIs and backend systems using Node.js, and Express.
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <i class="fas fa-check-circle text-indigo-600 mt-1"></i>
+                    Cloud deployment, system documentation, and stakeholder
+                    collaboration.
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <i class="fas fa-check-circle text-indigo-600 mt-1"></i>
+                    Rapid prototyping, continuous feedback, and hands-on
+                    troubleshooting.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════════════════════
+    SKILLS
+    ════════════════════════════════════════════════ -->
+      <section
+        id="skills"
+        class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-900/50"
+      >
+        <div class="max-w-7xl mx-auto">
+          <!-- Header -->
+          <div class="text-center mb-14 fade-up">
+            <span
+              class="text-indigo-600 dark:text-indigo-400 font-semibold text-sm tracking-widest uppercase"
+            >
+              Expertise
+            </span>
+            <h2
+              class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-2"
+            >
+              Technical Skills
+            </h2>
+            <div class="w-16 h-1 bg-indigo-600 mx-auto mt-4 rounded-full"></div>
+          </div>
+
+          <!-- Skills Grid (8 Categories) -->
+          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Programming Languages -->
+            <div
+              class="card-bg bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm fade-up"
+            >
+              <h3
+                class="text-lg font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2"
+              >
+                <i class="fas fa-code text-indigo-600"></i> Languages
+              </h3>
+              <div class="flex flex-col gap-2">
+                <div
+                  class="flex items-center gap-3 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-700/50 border border-slate-100 dark:border-slate-600"
+                >
+                  <i
+                    class="fab fa-js text-yellow-400 text-lg w-5 text-center"
+                  ></i>
+                  <span
+                    class="font-medium text-slate-700 dark:text-slate-200 text-sm"
+                    >JavaScript</span
+                  >
+                </div>
+                <div
+                  class="flex items-center gap-3 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-700/50 border border-slate-100 dark:border-slate-600"
+                >
+                  <i
+                    class="fab fa-python text-blue-500 text-lg w-5 text-center"
+                  ></i>
+                  <span
+                    class="font-medium text-slate-700 dark:text-slate-200 text-sm"
+                    >Python</span
+                  >
+                </div>
+                <div
+                  class="flex items-center gap-3 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-700/50 border border-slate-100 dark:border-slate-600"
+                >
+                  <i
+                    class="fab fa-php text-indigo-400 text-lg w-5 text-center"
+                  ></i>
+                  <span
+                    class="font-medium text-slate-700 dark:text-slate-200 text-sm"
+                    >PHP</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Frontend Development -->
+            <div
+              class="card-bg bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm fade-up"
+            >
+              <h3
+                class="text-lg font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2"
+              >
+                <i class="fas fa-laptop-code text-indigo-600"></i> Frontend
+              </h3>
+              <div class="flex flex-col gap-2">
+                <div
+                  class="flex items-center gap-3 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-700/50 border border-slate-100 dark:border-slate-600"
+                >
+                  <i
+                    class="fab fa-vuejs text-emerald-500 text-lg w-5 text-center"
+                  ></i>
+                  <span
+                    class="font-medium text-slate-700 dark:text-slate-200 text-sm"
+                    >Vite + Vue.js</span
+                  >
+                </div>
+                <div
+                  class="flex items-center gap-3 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-700/50 border border-slate-100 dark:border-slate-600"
+                >
+                  <i
+                    class="fab fa-css3-alt text-blue-400 text-lg w-5 text-center"
+                  ></i>
+                  <span
+                    class="font-medium text-slate-700 dark:text-slate-200 text-sm"
+                    >Tailwind CSS</span
+                  >
+                </div>
+                <div
+                  class="flex items-center gap-3 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-700/50 border border-slate-100 dark:border-slate-600"
+                >
+                  <i
+                    class="fab fa-css3-alt text-blue-400 text-lg w-5 text-center"
+                  ></i>
+                  <span
+                    class="font-medium text-slate-700 dark:text-slate-200 text-sm"
+                    >HTML5/CSS3</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Backend Development -->
+            <div
+              class="card-bg bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm fade-up"
+            >
+              <h3
+                class="text-lg font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2"
+              >
+                <i class="fas fa-server text-indigo-600"></i> Backend
+              </h3>
+              <div class="flex flex-col gap-2">
+                <div
+                  class="flex items-center gap-3 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-700/50 border border-slate-100 dark:border-slate-600"
+                >
+                  <i
+                    class="fab fa-node-js text-green-600 text-lg w-5 text-center"
+                  ></i>
+                  <span
+                    class="font-medium text-slate-700 dark:text-slate-200 text-sm"
+                    >Node.js</span
+                  >
+                </div>
+                <div
+                  class="flex items-center gap-3 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-700/50 border border-slate-100 dark:border-slate-600"
+                >
+                  <i
+                    class="fas fa-layer-group text-slate-500 text-lg w-5 text-center"
+                  ></i>
+                  <span
+                    class="font-medium text-slate-700 dark:text-slate-200 text-sm"
+                    >Express.js</span
+                  >
+                </div>
+                <div
+                  class="flex items-center gap-3 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-700/50 border border-slate-100 dark:border-slate-600"
+                >
+                  <i
+                    class="fas fa-network-wired text-blue-500 text-lg w-5 text-center"
+                  ></i>
+                  <span
+                    class="font-medium text-slate-700 dark:text-slate-200 text-sm"
+                    >REST APIs</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Database Technologies -->
+            <div
+              class="card-bg bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm fade-up"
+            >
+              <h3
+                class="text-lg font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2"
+              >
+                <i class="fas fa-database text-indigo-600"></i> Databases
+              </h3>
+              <div class="flex flex-col gap-2">
+                <div
+                  class="flex items-center gap-3 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-700/50 border border-slate-100 dark:border-slate-600"
+                >
+                  <i
+                    class="fas fa-fire text-orange-500 text-lg w-5 text-center"
+                  ></i>
+                  <span
+                    class="font-medium text-slate-700 dark:text-slate-200 text-sm"
+                    >Firebase Firestore</span
+                  >
+                </div>
+                <div
+                  class="flex items-center gap-3 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-700/50 border border-slate-100 dark:border-slate-600"
+                >
+                  <i
+                    class="fas fa-bolt text-yellow-500 text-lg w-5 text-center"
+                  ></i>
+                  <span
+                    class="font-medium text-slate-700 dark:text-slate-200 text-sm"
+                    >Firebase Realtime DB</span
+                  >
+                </div>
+                <div
+                  class="flex items-center gap-3 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-700/50 border border-slate-100 dark:border-slate-600"
+                >
+                  <i
+                    class="fas fa-table text-blue-600 text-lg w-5 text-center"
+                  ></i>
+                  <span
+                    class="font-medium text-slate-700 dark:text-slate-200 text-sm"
+                    >MySQL</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Tools & Platforms -->
+            <div
+              class="card-bg bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm fade-up"
+            >
+              <h3
+                class="text-lg font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2"
+              >
+                <i class="fas fa-tools text-indigo-600"></i> Tools & Platforms
+              </h3>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="flex items-center gap-2 px-3 py-1.5 bg-slate-50 dark:bg-slate-700/50 border border-slate-100 dark:border-slate-600 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-200"
+                >
+                  <i class="fas fa-code text-blue-500"></i> VS Code
+                </span>
+                <span
+                  class="flex items-center gap-2 px-3 py-1.5 bg-slate-50 dark:bg-slate-700/50 border border-slate-100 dark:border-slate-600 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-200"
+                >
+                  <i class="fab fa-git-alt text-orange-600"></i> Git
+                </span>
+                <span
+                  class="flex items-center gap-2 px-3 py-1.5 bg-slate-50 dark:bg-slate-700/50 border border-slate-100 dark:border-slate-600 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-200"
+                >
+                  <i class="fab fa-github text-slate-800 dark:text-white"></i>
+                  GitHub
+                </span>
+                <span
+                  class="flex items-center gap-2 px-3 py-1.5 bg-slate-50 dark:bg-slate-700/50 border border-slate-100 dark:border-slate-600 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-200"
+                >
+                  <i class="fas fa-space-shuttle text-orange-400"></i> Postman
+                </span>
+              </div>
+            </div>
+
+            <!-- AI Technologies -->
+            <div
+              class="card-bg bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm fade-up"
+            >
+              <h3
+                class="text-lg font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2"
+              >
+                <i class="fas fa-robot text-indigo-600"></i> AI Technologies
+              </h3>
+              <div class="flex flex-col gap-2">
+                <div
+                  class="flex items-center gap-3 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-700/50 border border-slate-100 dark:border-slate-600"
+                >
+                  <i
+                    class="fas fa-comment-dots text-emerald-600 text-lg w-5 text-center"
+                  ></i>
+                  <span
+                    class="font-medium text-slate-700 dark:text-slate-200 text-sm"
+                    >ChatGPT</span
+                  >
+                </div>
+                <div
+                  class="flex items-center gap-3 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-700/50 border border-slate-100 dark:border-slate-600"
+                >
+                  <i
+                    class="fas fa-sparkles text-blue-500 text-lg w-5 text-center"
+                  ></i>
+                  <span
+                    class="font-medium text-slate-700 dark:text-slate-200 text-sm"
+                    >Gemini</span
+                  >
+                </div>
+                <div
+                  class="flex items-center gap-3 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-700/50 border border-slate-100 dark:border-slate-600"
+                >
+                  <i
+                    class="fas fa-brain text-purple-500 text-lg w-5 text-center"
+                  ></i>
+                  <span
+                    class="font-medium text-slate-700 dark:text-slate-200 text-sm"
+                    >Copilot</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Soft Skills -->
+            <div
+              class="card-bg bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm fade-up"
+            >
+              <h3
+                class="text-lg font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2"
+              >
+                <i class="fas fa-users text-indigo-600"></i> Soft Skills
+              </h3>
+              <div class="flex flex-col gap-2">
+                <div
+                  class="flex items-center gap-3 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-700/50 border border-slate-100 dark:border-slate-600"
+                >
+                  <i
+                    class="fas fa-sync-alt text-teal-500 text-lg w-5 text-center"
+                  ></i>
+                  <span
+                    class="font-medium text-slate-700 dark:text-slate-200 text-sm"
+                    >Adaptability</span
+                  >
+                </div>
+                <div
+                  class="flex items-center gap-3 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-700/50 border border-slate-100 dark:border-slate-600"
+                >
+                  <i
+                    class="fas fa-puzzle-piece text-amber-500 text-lg w-5 text-center"
+                  ></i>
+                  <span
+                    class="font-medium text-slate-700 dark:text-slate-200 text-sm"
+                    >Problem Solving</span
+                  >
+                </div>
+                <div
+                  class="flex items-center gap-3 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-700/50 border border-slate-100 dark:border-slate-600"
+                >
+                  <i
+                    class="fas fa-book-reader text-indigo-500 text-lg w-5 text-center"
+                  ></i>
+                  <span
+                    class="font-medium text-slate-700 dark:text-slate-200 text-sm"
+                    >Continuous Learning</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Others -->
+            <div
+              class="card-bg bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm fade-up"
+            >
+              <h3
+                class="text-lg font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2"
+              >
+                <i class="fas fa-microchip text-indigo-600"></i> Others
+              </h3>
+              <div class="flex flex-col gap-2">
+                <div
+                  class="flex items-center gap-3 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-700/50 border border-slate-100 dark:border-slate-600"
+                >
+                  <i
+                    class="fas fa-plug text-blue-500 text-lg w-5 text-center"
+                  ></i>
+                  <span
+                    class="font-medium text-slate-700 dark:text-slate-200 text-sm"
+                    >API Dev/Integration</span
+                  >
+                </div>
+                <div
+                  class="flex items-center gap-3 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-700/50 border border-slate-100 dark:border-slate-600"
+                >
+                  <i
+                    class="fas fa-wifi text-emerald-500 text-lg w-5 text-center"
+                  ></i>
+                  <span
+                    class="font-medium text-slate-700 dark:text-slate-200 text-sm"
+                    >IOT & Embedded Systems</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category Explanations Card -->
+          <div
+            class="mt-12 bg-indigo-50 dark:bg-slate-800/80 p-8 rounded-2xl border border-indigo-100 dark:border-slate-700 shadow-sm fade-up"
+          >
+            <h3
+              class="text-2xl font-bold text-slate-900 dark:text-white mb-8 text-center"
+            >
+              How I Apply These Technologies
+            </h3>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <!-- Logic & Foundation -->
+              <div>
+                <h4
+                  class="font-bold text-indigo-600 dark:text-indigo-400 mb-2 flex items-center gap-2"
+                >
+                  <i class="fas fa-code"></i> Core Languages
+                </h4>
+                <p
+                  class="text-slate-600 dark:text-slate-300 text-xs leading-relaxed"
+                >
+                  I write clean, efficient logic in JavaScript, Python, and PHP
+                  to form the core foundation of applications, scripting
+                  processes, and powering back-end architectures.
+                </p>
+              </div>
+
+              <!-- UI / Frontend -->
+              <div>
+                <h4
+                  class="font-bold text-indigo-600 dark:text-indigo-400 mb-2 flex items-center gap-2"
+                >
+                  <i class="fas fa-laptop-code"></i> Frontend & UI
+                </h4>
+                <p
+                  class="text-slate-600 dark:text-slate-300 text-xs leading-relaxed"
+                >
+                  Using Vite+Vue.js and Tailwind CSS, I construct highly
+                  responsive, accessible, and fast-loading user interfaces that
+                  look great on any device.
+                </p>
+              </div>
+
+              <!-- Server Logic -->
+              <div>
+                <h4
+                  class="font-bold text-indigo-600 dark:text-indigo-400 mb-2 flex items-center gap-2"
+                >
+                  <i class="fas fa-server"></i> Server Logic
+                </h4>
+                <p
+                  class="text-slate-600 dark:text-slate-300 text-xs leading-relaxed"
+                >
+                  Node.js and Express allow me to build secure RESTful APIs,
+                  manage server-side routing, and seamlessly process requests
+                  from the client.
+                </p>
+              </div>
+
+              <!-- Data Management -->
+              <div>
+                <h4
+                  class="font-bold text-indigo-600 dark:text-indigo-400 mb-2 flex items-center gap-2"
+                >
+                  <i class="fas fa-database"></i> Data Management
+                </h4>
+                <p
+                  class="text-slate-600 dark:text-slate-300 text-xs leading-relaxed"
+                >
+                  I leverage Firebase for scalable, real-time cloud data
+                  synchronization, and MySQL for structured, relational database
+                  management.
+                </p>
+              </div>
+
+              <!-- Productivity -->
+              <div>
+                <h4
+                  class="font-bold text-indigo-600 dark:text-indigo-400 mb-2 flex items-center gap-2"
+                >
+                  <i class="fas fa-tools"></i> Tools & Workflows
+                </h4>
+                <p
+                  class="text-slate-600 dark:text-slate-300 text-xs leading-relaxed"
+                >
+                  I manage code versions via Git/GitHub, write code smoothly in
+                  VS Code, and rigorously test endpoints using Postman to ensure
+                  reliability.
+                </p>
+              </div>
+
+              <!-- Innovation -->
+              <div>
+                <h4
+                  class="font-bold text-indigo-600 dark:text-indigo-400 mb-2 flex items-center gap-2"
+                >
+                  <i class="fas fa-robot"></i> AI Integration
+                </h4>
+                <p
+                  class="text-slate-600 dark:text-slate-300 text-xs leading-relaxed"
+                >
+                  I utilize ChatGPT, Gemini, and Copilot to accelerate my
+                  workflow, debug complex issues, and integrate intelligent
+                  features into projects.
+                </p>
+              </div>
+
+              <!-- Human Element -->
+              <div>
+                <h4
+                  class="font-bold text-indigo-600 dark:text-indigo-400 mb-2 flex items-center gap-2"
+                >
+                  <i class="fas fa-users"></i> Soft Skills
+                </h4>
+                <p
+                  class="text-slate-600 dark:text-slate-300 text-xs leading-relaxed"
+                >
+                  Beyond code, I adapt quickly to new environments, untangle
+                  complex problems efficiently, and continuously learn to stay
+                  ahead of tech trends.
+                </p>
+              </div>
+
+              <!-- Hardware & Connectivity -->
+              <div>
+                <h4
+                  class="font-bold text-indigo-600 dark:text-indigo-400 mb-2 flex items-center gap-2"
+                >
+                  <i class="fas fa-microchip"></i> Hardware & APIs
+                </h4>
+                <p
+                  class="text-slate-600 dark:text-slate-300 text-xs leading-relaxed"
+                >
+                  I build bridges between different software systems via custom
+                  APIs and connect web applications to physical hardware using
+                  IoT technologies.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════════════════════
+    PROJECTS
+    ════════════════════════════════════════════════ -->
+      <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-14 fade-up">
+            <span
+              class="text-indigo-600 dark:text-indigo-400 font-semibold text-sm tracking-widest uppercase"
+              >Portfolio</span
+            >
+            <h2
+              class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-2"
+            >
+              Featured Projects
+            </h2>
+            <div class="w-16 h-1 bg-indigo-600 mx-auto mt-4 rounded-full"></div>
+          </div>
+
+          <!-- Filter buttons -->
+          <div class="flex flex-wrap justify-center gap-3 mb-10 fade-up">
+            <button
+              type="button"
+              class="filter-btn px-5 py-2 rounded-full text-sm font-semibold bg-indigo-600 text-white shadow-md"
+              data-filter="all"
+              aria-pressed="true"
+            >
+              All
+            </button>
+            <button
+              type="button"
+              class="filter-btn px-5 py-2 rounded-full text-sm font-semibold bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-indigo-100 dark:hover:bg-indigo-900/40 transition"
+              data-filter="fullstack"
+              aria-pressed="false"
+            >
+              Full-Stack
+            </button>
+            <button
+              type="button"
+              class="filter-btn px-5 py-2 rounded-full text-sm font-semibold bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-indigo-100 dark:hover:bg-indigo-900/40 transition"
+              data-filter="frontend"
+              aria-pressed="false"
+            >
+              Frontend
+            </button>
+            <button
+              type="button"
+              class="filter-btn px-5 py-2 rounded-full text-sm font-semibold bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-indigo-100 dark:hover:bg-indigo-900/40 transition"
+              data-filter="ai"
+              aria-pressed="false"
+            >
+              AI / IoT
+            </button>
+          </div>
+
+          <!-- Project grid -->
+          <div
+            class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
+            id="projectGrid"
+          >
+            <!-- Project 1 -->
+            <div
+              class="project-card bg-white dark:bg-slate-800 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 shadow-sm fade-up"
+              data-category="ai"
+            >
+              <div
+                class="h-48 bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white text-4xl"
+              >
+                🌱
+              </div>
+              <div class="p-5">
+                <span
+                  class="text-xs font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-wide"
+                  >IoT / AI</span
+                >
+                <h3
+                  class="text-xl font-bold text-slate-900 dark:text-white mt-1"
+                >
+                  AeroTech Aeroponics System
+                </h3>
+                <p class="text-sm text-slate-600 dark:text-slate-400 mt-2">
+                  Vue.js, Flask, TensorFlow, Firebase, Tailwind, PWA
+                </p>
+                <p
+                  class="text-slate-500 dark:text-slate-400 text-sm mt-2 line-clamp-2"
+                >
+                  AI-backed aeroponics monitoring platform with disease
+                  prediction, sensor analytics, and remote PWA controls for
+                  smart farming.
+                </p>
+                <div class="flex gap-3 mt-4">
+                  <a
+                    href="#"
+                    class="text-indigo-600 dark:text-indigo-400 text-sm font-semibold hover:underline"
+                    >Learn More →</a
+                  >
+                  <a
+                    href="#"
+                    class="text-slate-500 dark:text-slate-400 text-sm hover:text-indigo-600 dark:hover:text-indigo-400"
+                    ><i class="fab fa-github"></i> Source</a
+                  >
+                </div>
+              </div>
+            </div>
+            <!-- Project 2 -->
+            <div
+              class="project-card bg-white dark:bg-slate-800 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 shadow-sm fade-up"
+              data-category="fullstack"
+            >
+              <div
+                class="h-48 bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-white text-4xl"
+              >
+                🏢
+              </div>
+              <div class="p-5">
+                <span
+                  class="text-xs font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-wide"
+                  >ERP</span
+                >
+                <h3
+                  class="text-xl font-bold text-slate-900 dark:text-white mt-1"
+                >
+                  ISUZU ERP System
+                </h3>
+                <p class="text-sm text-slate-600 dark:text-slate-400 mt-2">
+                  Vue.js, Node.js, Express, Firebase, MySQL, PM2
+                </p>
+                <p
+                  class="text-slate-500 dark:text-slate-400 text-sm mt-2 line-clamp-2"
+                >
+                  Enterprise resource planning platform with inventory, stock
+                  control, user roles, and secure operational workflows for auto
+                  sales management.
+                </p>
+                <div class="flex gap-3 mt-4">
+                  <a
+                    href="#"
+                    class="text-indigo-600 dark:text-indigo-400 text-sm font-semibold hover:underline"
+                    >Learn More →</a
+                  >
+                  <a
+                    href="#"
+                    class="text-slate-500 dark:text-slate-400 text-sm hover:text-indigo-600 dark:hover:text-indigo-400"
+                    ><i class="fab fa-github"></i> Source</a
+                  >
+                </div>
+              </div>
+            </div>
+            <!-- Project 3 -->
+            <div
+              class="project-card bg-white dark:bg-slate-800 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 shadow-sm fade-up"
+              data-category="frontend"
+            >
+              <div
+                class="h-48 bg-gradient-to-br from-rose-500 to-pink-600 flex items-center justify-center text-white text-4xl"
+              >
+                📚
+              </div>
+              <div class="p-5">
+                <span
+                  class="text-xs font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-wide"
+                  >Platform</span
+                >
+                <h3
+                  class="text-xl font-bold text-slate-900 dark:text-white mt-1"
+                >
+                  Learning Platform
+                </h3>
+                <p class="text-sm text-slate-600 dark:text-slate-400 mt-2">
+                  Vue.js, Firebase, Vercel
+                </p>
+                <p
+                  class="text-slate-500 dark:text-slate-400 text-sm mt-2 line-clamp-2"
+                >
+                  Interactive educational website for early literacy using
+                  speech synthesis, gamified phonics, and responsive learning
+                  activities.
+                </p>
+                <div class="flex gap-3 mt-4">
+                  <a
+                    href="#"
+                    class="text-indigo-600 dark:text-indigo-400 text-sm font-semibold hover:underline"
+                    >Learn More →</a
+                  >
+                  <a
+                    href="#"
+                    class="text-slate-500 dark:text-slate-400 text-sm hover:text-indigo-600 dark:hover:text-indigo-400"
+                    ><i class="fab fa-github"></i>Source</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════════════════════
+    CERTIFICATIONS & INTERESTS
+    ════════════════════════════════════════════════ -->
+      <section
+        class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-900/50"
+      >
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-14 fade-up">
+            <span
+              class="text-indigo-600 dark:text-indigo-400 font-semibold text-sm tracking-widest uppercase"
+              >Credentials</span
+            >
+            <h2
+              class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-2"
+            >
+              Certifications & Interests
+            </h2>
+            <div class="w-16 h-1 bg-indigo-600 mx-auto mt-4 rounded-full"></div>
+          </div>
+          <div class="grid lg:grid-cols-2 gap-6">
+            <div
+              class="card-bg bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm fade-up"
+            >
+              <h3
+                class="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2"
+              >
+                <i class="fas fa-certificate text-indigo-600"></i>
+                Certifications
+              </h3>
+              <ul class="space-y-3 text-slate-600 dark:text-slate-300">
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check-circle text-indigo-600 mt-1"></i> JAVA
+                  Programming NCIII Certification
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check-circle text-indigo-600 mt-1"></i>
+                  Microsoft IT Specialist Data Analytics Certification
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check-circle text-indigo-600 mt-1"></i>
+                  CodeChum Python Programming 2 Certification
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check-circle text-indigo-600 mt-1"></i>
+                  Fortinet Certified Associate Cybersecurity
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check-circle text-indigo-600 mt-1"></i>
+                  Internship Completion Certificate
+                </li>
+              </ul>
+            </div>
+            <div
+              class="card-bg bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm fade-up"
+            >
+              <h3
+                class="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2"
+              >
+                <i class="fas fa-lightbulb text-indigo-600"></i> Interests
+              </h3>
+              <p
+                class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed"
+              >
+                I enjoy building practical applications at the intersection of
+                software, AI, and hardware. My interests center on making
+                technology work for people through intuitive interfaces, strong
+                security, and smart automation.
+              </p>
+              <div class="flex flex-wrap gap-3 mt-6">
+                <span
+                  class="px-4 py-2 bg-slate-100 dark:bg-slate-700 rounded-full text-sm font-medium text-slate-700 dark:text-slate-200"
+                  >Web Development</span
+                >
+                <span
+                  class="px-4 py-2 bg-slate-100 dark:bg-slate-700 rounded-full text-sm font-medium text-slate-700 dark:text-slate-200"
+                  >AI & Machine Learning</span
+                >
+                <span
+                  class="px-4 py-2 bg-slate-100 dark:bg-slate-700 rounded-full text-sm font-medium text-slate-700 dark:text-slate-200"
+                  >IoT & Embedded Systems</span
+                >
+                <span
+                  class="px-4 py-2 bg-slate-100 dark:bg-slate-700 rounded-full text-sm font-medium text-slate-700 dark:text-slate-200"
+                  >User Experience</span
+                >
+                <span
+                  class="px-4 py-2 bg-slate-100 dark:bg-slate-700 rounded-full text-sm font-medium text-slate-700 dark:text-slate-200"
+                  >Innovation & Emerging Tech</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════════════════════
+    EXPERIENCE & EDUCATION
+    ════════════════════════════════════════════════ -->
+      <section
+        id="experience"
+        class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-900/50"
+      >
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-14 fade-up">
+            <span
+              class="text-indigo-600 dark:text-indigo-400 font-semibold text-sm tracking-widest uppercase"
+              >Career</span
+            >
+            <h2
+              class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-2"
+            >
+              Experience & Education
+            </h2>
+            <div class="w-16 h-1 bg-indigo-600 mx-auto mt-4 rounded-full"></div>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-10">
+            <!-- Experience -->
+            <div class="space-y-6 fade-up">
+              <h3
+                class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2"
+              >
+                <i class="fas fa-briefcase text-indigo-600"></i> Work Experience
+              </h3>
+              <div
+                class="card-bg bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700"
+              >
+                <div class="flex justify-between items-start">
+                  <div>
+                    <h4 class="font-bold text-slate-900 dark:text-white">
+                      Intern, Java Programming
+                    </h4>
+                    <p class="text-sm text-indigo-600 dark:text-indigo-400">
+                      OIKOS SIL / TESDA BCRV TECH-VOC, INC
+                    </p>
+                  </div>
+                  <span
+                    class="text-xs font-semibold bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300 px-3 py-1 rounded-full"
+                    >Oct – Nov 2025</span
+                  >
+                </div>
+                <p class="text-sm text-slate-500 dark:text-slate-400 mt-2">
+                  Built an educational learning platform using Java, Vue.js, and
+                  Firebase with real-time text-to-speech and child-friendly
+                  phonics activities. Delivered documentation, user guides, and
+                  stakeholder presentations.
+                </p>
+              </div>
+              <div
+                class="card-bg bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700"
+              >
+                <div class="flex justify-between items-start">
+                  <div>
+                    <h4 class="font-bold text-slate-900 dark:text-white">
+                      Programmer OJT Intern
+                    </h4>
+                    <p class="text-sm text-indigo-600 dark:text-indigo-400">
+                      Mina De Oro Motors Inc. – ISUZU Calapan
+                    </p>
+                  </div>
+                  <span
+                    class="text-xs font-semibold bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300 px-3 py-1 rounded-full"
+                    >Feb – Apr 2026</span
+                  >
+                </div>
+                <p class="text-sm text-slate-500 dark:text-slate-400 mt-2">
+                  Developed an ERP platform with Vue.js, Node.js, and Firebase
+                  supporting inventory, role-based access, and business
+                  workflows. Collaborated across departments to gather
+                  requirements and support system adoption.
+                </p>
+              </div>
+              <div
+                class="card-bg bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700"
+              >
+                <div class="flex justify-between items-start">
+                  <div>
+                    <h4 class="font-bold text-slate-900 dark:text-white">
+                      IT Capstone | Student Developer
+                    </h4>
+                    <p class="text-sm text-indigo-600 dark:text-indigo-400">
+                      Mindoro State University Calapan
+                    </p>
+                  </div>
+                  <span
+                    class="text-xs font-semibold bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300 px-3 py-1 rounded-full"
+                    >2025 – 2026</span
+                  >
+                </div>
+                <p class="text-sm text-slate-500 dark:text-slate-400 mt-2">
+                  Designed and developed a practical web application for
+                  academic use focusing on usability and system efficiency,
+                  while applying agile development and continuous feedback to
+                  deliver quality features.
+                </p>
+              </div>
+            </div>
+            <!-- Education + Certifications -->
+            <div class="space-y-6 fade-up">
+              <h3
+                class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2"
+              >
+                <i class="fas fa-graduation-cap text-indigo-600"></i> Education
+              </h3>
+              <div
+                class="card-bg bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700"
+              >
+                <h4 class="font-bold text-slate-900 dark:text-white">
+                  B.S. Information Technology
+                </h4>
+                <p class="text-sm text-indigo-600 dark:text-indigo-400">
+                  Mindoro State University Calapan Campus
+                </p>
+                <span class="text-xs text-slate-500 dark:text-slate-400"
+                  >2022 – 2026</span
+                >
+                <p class="text-sm text-slate-500 dark:text-slate-400 mt-2">
+                  Practical experience in web development, AI solutions, and
+                  embedded systems through academic projects and internships.
+                </p>
+              </div>
+              <div
+                class="card-bg bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700"
+              >
+                <h4 class="font-bold text-slate-900 dark:text-white">
+                  Senior High School - STEM
+                </h4>
+                <p class="text-sm text-indigo-600 dark:text-indigo-400">
+                  Oriental Mindoro National High School
+                </p>
+                <span class="text-xs text-slate-500 dark:text-slate-400"
+                  >2020 – 2022</span
+                >
+                <p class="text-sm text-slate-500 dark:text-slate-400 mt-2">
+                  Studied science, technology, engineering, and math
+                  fundamentals to support application development and logical
+                  problem solving.
+                </p>
+              </div>
+              <div class="mt-6">
+                <h4
+                  class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2"
+                >
+                  <i class="fas fa-certificate text-indigo-600"></i>
+                  Certifications
+                </h4>
+                <div class="flex flex-wrap gap-2 mt-3">
+                  <span
+                    class="px-3 py-1 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-xs font-semibold rounded-full"
+                    >JAVA Programming NCIII</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-xs font-semibold rounded-full"
+                    >Microsoft IT Specialist Data Analytics</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-xs font-semibold rounded-full"
+                    >CodeChum Python Programming 2</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-xs font-semibold rounded-full"
+                    >Fortinet Certified Associate Cybersecurity</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-xs font-semibold rounded-full"
+                    >Internship Completion Certificate</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════════════════════
+    CONTACT
+    ════════════════════════════════════════════════ -->
+      <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-5xl mx-auto">
+          <div class="text-center mb-14 fade-up">
+            <span
+              class="text-indigo-600 dark:text-indigo-400 font-semibold text-sm tracking-widest uppercase"
+              >Get in Touch</span
+            >
+            <h2
+              class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-2"
+            >
+              Let's Work Together
+            </h2>
+            <div class="w-16 h-1 bg-indigo-600 mx-auto mt-4 rounded-full"></div>
+            <p class="text-slate-600 dark:text-slate-400 mt-4 max-w-xl mx-auto">
+              Have a project in mind? I'd love to hear about it. Reach out and
+              let's build something amazing.
+            </p>
+          </div>
+          <div class="grid md:grid-cols-3 gap-8 fade-up">
+            <div class="md:col-span-2">
+              <form
+                id="contactForm"
+                class="card-bg bg-white dark:bg-slate-800 p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-700"
+                action="https://formspree.io/f/xvkpbvwv"
+                method="POST"
+                data-formspree="true"
+              >
+                <div class="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label
+                      class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1"
+                      >Name *</label
+                    ><input
+                      name="name"
+                      type="text"
+                      required
+                      class="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                      placeholder="Your name"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1"
+                      >Email *</label
+                    ><input
+                      name="email"
+                      type="email"
+                      required
+                      class="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                      placeholder="you@example.com"
+                    />
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <label
+                    for="subject"
+                    class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1"
+                  >
+                    Subject
+                  </label>
+
+                  <input
+                    id="subject"
+                    name="subject"
+                    type="text"
+                    class="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    placeholder="Project / Collaboration / Job Offer"
+                  />
+                </div>
+                <div class="mt-4">
+                  <label
+                    class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1"
+                    >Message *</label
+                  ><textarea
+                    name="message"
+                    rows="5"
+                    required
+                    class="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    placeholder="Tell me about your project..."
+                  ></textarea>
+                </div>
+                <button
+                  id="submitBtn"
+                  type="submit"
+                  class="mt-5 w-full sm:w-auto px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl shadow-lg transition flex items-center justify-center gap-2"
+                >
+                  <i class="fas fa-paper-plane"></i>
+                  <span>Send Message</span>
+                </button>
+                <p
+                  id="formStatus"
+                  class="mt-4 text-sm font-medium hidden"
+                  role="status"
+                  aria-live="polite"
+                ></p>
+              </form>
+            </div>
+            <div class="space-y-5">
+              <div
+                class="card-bg bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700"
+              >
+                <p
+                  class="text-sm font-semibold text-slate-700 dark:text-slate-300"
+                >
+                  <i class="fas fa-envelope text-indigo-600 w-6"></i> Email
+                </p>
+                <a
+                  href="mailto:arnoldadeva.dev@gmail.com"
+                  class="text-slate-900 dark:text-white font-medium hover:underline"
+                >
+                  arnoldadeva.dev@gmail.com
+                </a>
+              </div>
+              <div
+                class="card-bg bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700"
+              >
+                <p
+                  class="text-sm font-semibold text-slate-700 dark:text-slate-300"
+                >
+                  <i class="fas fa-phone text-indigo-600 w-6"></i> Phone
+                </p>
+                <p class="text-slate-900 dark:text-white font-medium">
+                  Available on request
+                </p>
+              </div>
+              <div
+                class="card-bg bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700"
+              >
+                <p
+                  class="text-sm font-semibold text-slate-700 dark:text-slate-300"
+                >
+                  <i class="fas fa-map-marker-alt text-indigo-600 w-6"></i>
+                  Location
+                </p>
+                <p class="text-slate-900 dark:text-white font-medium">
+                  Calapan City, Oriental Mindoro
+                </p>
+              </div>
+              <div class="flex gap-4 pt-2">
+                <a
+                  href="https://github.com/ctrl-Anode"
+                  class="text-slate-500 hover:text-indigo-600 dark:text-slate-400 dark:hover:text-indigo-400 text-2xl"
+                  ><i class="fab fa-github"></i
+                ></a>
+                <a
+                  href="https://www.facebook.com/Aan0de"
+                  class="text-slate-500 hover:text-indigo-600 dark:text-slate-400 dark:hover:text-indigo-400 text-2xl"
+                  ><i class="fab fa-facebook"></i
+                ></a>
+                <a
+                  href="https://www.instagram.com/aa_anode"
+                  class="text-slate-500 hover:text-indigo-600 dark:text-slate-400 dark:hover:text-indigo-400 text-2xl"
+                  ><i class="fab fa-instagram"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ════════════════════════════════════════════════
+    FOOTER
+    ════════════════════════════════════════════════ -->
+    <footer
+      class="py-8 border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900"
+    >
+      <div
+        class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-slate-500 dark:text-slate-400"
+      >
+        <p>&copy; 2026 Arnold Z. Adeva. All rights reserved.</p>
+        <div class="flex gap-6">
+          <a
+            href="#"
+            class="hover:text-indigo-600 dark:hover:text-indigo-400 transition"
+            >Privacy</a
+          >
+          <a
+            href="#"
+            class="hover:text-indigo-600 dark:hover:text-indigo-400 transition"
+            >Terms</a
+          >
+          <a
+            href="#"
+            class="hover:text-indigo-600 dark:hover:text-indigo-400 transition"
+            >Sitemap</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <!-- ════════════════════════════════════════════════
+    JAVASCRIPT
+    ════════════════════════════════════════════════ -->
+    <script>
+      const form = document.getElementById("contactForm");
+      const status = document.getElementById("formStatus");
+      const submitBtn = document.getElementById("submitBtn");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const originalText = submitBtn.innerHTML;
+
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = `
+    <i class="fas fa-spinner fa-spin"></i>
+    <span>Sending...</span>
+  `;
+
+        status.hidden = false;
+        status.textContent = "Sending...";
+        status.className =
+          "mt-4 text-sm font-medium text-indigo-600 dark:text-indigo-400";
+
+        try {
+          const response = await fetch(form.action, {
+            method: "POST",
+            body: new FormData(form),
+            headers: {
+              Accept: "application/json",
+            },
+          });
+
+          if (!response.ok) {
+            const data = await response.json().catch(() => ({}));
+            throw new Error(data.error || "Failed to send message.");
+          }
+
+          form.reset();
+
+          status.textContent = "Message sent successfully. Thank you!";
+          status.className =
+            "mt-4 text-sm font-medium text-emerald-600 dark:text-emerald-400";
+        } catch (error) {
+          status.textContent =
+            error.message || "Unable to send your message. Please try again.";
+          status.className = "mt-4 text-sm font-medium text-red-500";
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalText;
+        }
+      });
+      document.addEventListener("DOMContentLoaded", () => {
+        // ── Theme toggle ──
+        const themeToggle = document.getElementById("themeToggle");
+        const themeIcon = document.getElementById("themeIcon");
+        const html = document.documentElement;
+
+        // Check saved theme
+        if (
+          localStorage.getItem("theme") === "dark" ||
+          (!localStorage.getItem("theme") &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+          html.classList.add("dark");
+          themeIcon.className = "fas fa-sun text-lg";
+        } else {
+          html.classList.remove("dark");
+          themeIcon.className = "fas fa-moon text-lg";
+        }
+
+        themeToggle.addEventListener("click", () => {
+          html.classList.toggle("dark");
+          if (html.classList.contains("dark")) {
+            localStorage.setItem("theme", "dark");
+            themeIcon.className = "fas fa-sun text-lg";
+          } else {
+            localStorage.setItem("theme", "light");
+            themeIcon.className = "fas fa-moon text-lg";
+          }
+        });
+
+        // ── Mobile menu ──
+        const menuBtn = document.getElementById("mobileMenuBtn");
+        const mobileMenu = document.getElementById("mobileMenu");
+        menuBtn.addEventListener("click", () => {
+          const hiddenNow = mobileMenu.classList.toggle("hidden");
+          // update aria-expanded and aria-hidden
+          const expanded = !mobileMenu.classList.contains("hidden");
+          menuBtn.setAttribute("aria-expanded", expanded ? "true" : "false");
+          mobileMenu.setAttribute("aria-hidden", expanded ? "false" : "true");
+        });
+        // Close mobile menu on link click and update aria
+        mobileMenu.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => {
+            mobileMenu.classList.add("hidden");
+            menuBtn.setAttribute("aria-expanded", "false");
+            mobileMenu.setAttribute("aria-hidden", "true");
+          });
+        });
+
+        // ── Scroll-triggered fade-up (Intersection Observer) ──
+        const fadeEls = document.querySelectorAll(".fade-up");
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+              }
+            });
+          },
+          { threshold: 0.15 },
+        );
+        fadeEls.forEach((el) => observer.observe(el));
+
+        // ── Skill bar animation (trigger when visible) ──
+        const skillBars = document.querySelectorAll(".skill-bar");
+        const skillObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const bar = entry.target;
+                const text = bar
+                  .closest("div")
+                  ?.querySelector(".flex.justify-between span:last-child");
+                if (text) {
+                  const pct = parseInt(text.textContent);
+                  bar.style.width = pct + "%";
+                } else {
+                  bar.style.width = "85%"; // fallback
+                }
+                skillObserver.unobserve(bar);
+              }
+            });
+          },
+          { threshold: 0.3 },
+        );
+        skillBars.forEach((bar) => {
+          // initially hidden
+          bar.style.width = "0%";
+          skillObserver.observe(bar);
+        });
+
+        // ── Project filter ──
+        const filterBtns = document.querySelectorAll(".filter-btn");
+        const projects = document.querySelectorAll(".project-card");
+
+        filterBtns.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            // update active button style and aria-pressed
+            filterBtns.forEach((b) => {
+              b.classList.remove("bg-indigo-600", "text-white", "shadow-md");
+              b.classList.add(
+                "bg-slate-200",
+                "dark:bg-slate-700",
+                "text-slate-700",
+                "dark:text-slate-300",
+              );
+              b.setAttribute("aria-pressed", "false");
+            });
+            btn.classList.remove(
+              "bg-slate-200",
+              "dark:bg-slate-700",
+              "text-slate-700",
+              "dark:text-slate-300",
+            );
+            btn.classList.add("bg-indigo-600", "text-white", "shadow-md");
+            btn.setAttribute("aria-pressed", "true");
+
+            const filter = btn.dataset.filter;
+            projects.forEach((proj) => {
+              const cat = proj.dataset.category;
+              if (filter === "all" || cat === filter) {
+                proj.hidden = false;
+                proj.setAttribute("aria-hidden", "false");
+                // ensure visible with opacity transition
+                setTimeout(() => (proj.style.opacity = "1"), 20);
+              } else {
+                proj.style.opacity = "0";
+                proj.setAttribute("aria-hidden", "true");
+                // wait for opacity transition before hiding to avoid layout jumps
+                setTimeout(() => (proj.hidden = true), 320);
+              }
+            });
+          });
+          // keyboard support (Enter/Space already triggers button click, but keep explicit handler)
+          btn.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              btn.click();
+            }
+          });
+        });
+
+        // ── Contact form (Formspree-capable) ──
+        const form = document.getElementById("contactForm");
+        const status = document.getElementById("formStatus");
+        form.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          status.classList.remove("hidden");
+          status.classList.remove("text-emerald-600", "text-red-500");
+          status.textContent = "⏳ Sending...";
+          status.className =
+            "mt-4 text-sm font-medium text-indigo-600 dark:text-indigo-400";
+
+          // If still using placeholder Formspree ID, show helpful message
+          if (form.action.includes("yourFormId")) {
+            // Simulate send for users who haven't configured Formspree yet
+            setTimeout(() => {
+              status.textContent =
+                "⚠️ Form not configured. Replace the `action` URL with your Formspree form endpoint.";
+              status.className = "mt-4 text-sm font-medium text-red-500";
+            }, 800);
+            return;
+          }
+
+          // Try to submit via fetch to the form action (supports Formspree)
+          try {
+            const formData = new FormData(form);
+            const res = await fetch(form.action, {
+              method: form.method || "POST",
+              body: formData,
+              headers: {
+                Accept: "application/json",
+              },
+            });
+            if (res.ok) {
+              status.textContent =
+                "✅ Message sent! I'll get back to you soon.";
+              status.className =
+                "mt-4 text-sm font-medium text-emerald-600 dark:text-emerald-400";
+              form.reset();
+            } else {
+              const data = await res.json().catch(() => ({}));
+              status.textContent =
+                data.error || "❌ Sending failed. Please try again later.";
+              status.className = "mt-4 text-sm font-medium text-red-500";
+            }
+          } catch (err) {
+            status.textContent = "❌ Network error. Please try again later.";
+            status.className = "mt-4 text-sm font-medium text-red-500";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
